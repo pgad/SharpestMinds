@@ -1,21 +1,18 @@
-import csv
+import pandas as pd
+import numpy as np
 
-def load_data_as_array(path):
 
-#Loads csv files into arrays
+def load_csv_as_array(path):
 
-	data = []
+#Loads csv files into numpy arrays as float32
 
 	if isinstance(path, str) is False:
 
 		path = str(path)
 
 
-	ifile  = open(path, "r")
+	data = pd.read_csv(path)
 
-	read = csv.reader(ifile)
+	npdata = np.array(data, dtype = 'float32')
 
-	for row in read :
-		data.append(row)
-
-	return data
+	return npdata
